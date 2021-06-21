@@ -9,7 +9,7 @@ const MovieResults = (data) => {
 
     async function handleSearchTitle(query) {
         // url for fetching json data of selected movie from OMDb api with user input and api key
-        let url = `http://www.omdbapi.com/?t=${query}&apikey=${process.env.REACT_APP_API_KEY}`
+        let url = `https://www.omdbapi.com/?t=${query}&apikey=${process.env.REACT_APP_API_KEY}`
         // make get request (default) to movie api
         await fetch(url)
             .then(response => { // get Promise for json body of http response (not loaded yet)
@@ -37,7 +37,7 @@ const MovieResults = (data) => {
                     ? <span className="searchResultVal">No movies found -- try another search!</span>
                     : <div className="resultSection">
                         <span className="searchResultVal">Total results: {movies.totalResults}</span>
-                        <div className="searchList"> {console.log(movies)} 
+                        <div className="searchList">
                             { movies.Search.map(movie => {
                                 // display each movie detail
                                 return <div onClick={() => handleSearchTitle(movie.Title)} className="searchMovieItem">

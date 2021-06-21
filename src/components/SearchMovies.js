@@ -12,7 +12,7 @@ function SearchMovies() {
         e.preventDefault()
         async function fetchAPI() {
             // url for fetching json data from OMDb api with user input and api key
-            let url = `http://www.omdbapi.com/?s=${query}&apikey=${process.env.REACT_APP_API_KEY}`
+            let url = `https://www.omdbapi.com/?s=${query}&apikey=${process.env.REACT_APP_API_KEY}`
             // make get request (default) to movie api
             await fetch(url)
             .then(response => { // get Promise for json body of http response (not loaded yet)
