@@ -103,7 +103,6 @@ span {
 }
 
 .movieDetail{
-    opacity: 100%;
     display: inherit;
     flex-direction: column;
     margin: 0 1rem;
