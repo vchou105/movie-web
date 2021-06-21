@@ -72,7 +72,6 @@ span {
     position: relative;
     width: 70%;
     max-height: 80vh;
-    opacity: 100%;
     display: flex;
     flex-direction: row;
     margin: 10vh auto;
