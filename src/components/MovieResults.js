@@ -55,7 +55,7 @@ const MovieResults = (props) => {
     return (
         <div className="resultSection">
             { // display movie results if more than 1 result found
-                movies.Response === "False" || movies.totalResults == 0
+                movies.Response === "False" || movies.totalResults === 0
                     ? <span className="searchResultVal">No movies found -- try another search!</span>
                     : <div className="movieResults">
                         <span className="searchResultVal">Total results: {movies.totalResults}</span>
@@ -74,7 +74,7 @@ const MovieResults = (props) => {
             <div className="pageBar">
                 { 
                     setPages().map(page => {
-                        return <span className={page == currPage ? "active pageOption" : "pageOption"} onClick={() => loadPage(page)}>{page}</span>
+                        return <span className={page === currPage ? "active pageOption" : "pageOption"} onClick={() => loadPage(page)}>{page}</span>
                         
                     })
                 }
@@ -85,23 +85,23 @@ const MovieResults = (props) => {
                         <div className="movieItem">
                             <span className="close" onClick={() => setShowMovie(false)}>x</span>
                             { // display movie poster if available (not null or N/A)
-                                movie.Poster && movie.Poster != "N/A" && <img src={movie.Poster} alt={`Movie poster for ${movie.Title}`} />
+                                movie.Poster && movie.Poster !== "N/A" && <img src={movie.Poster} alt={`Movie poster for ${movie.Title}`} />
                             }
                             <div className="movieDetail">
                                 <div className="title">{movie.Title}</div>
                                 {
-                                    movie.Genre && movie.Genre != "N/A" && <p className="genre">{movie.Genre}</p>
+                                    movie.Genre && movie.Genre !== "N/A" && <p className="genre">{movie.Genre}</p>
                                 }
                                 { // check each movie detail exists (not null or empty string) before showing
-                                    movie.Released && movie.Released != "N/A" && <p className="released">Released: {movie.Released}</p>
+                                    movie.Released && movie.Released !== "N/A" && <p className="released">Released: {movie.Released}</p>
                                 }
                                 {
-                                    movie.Runtime && movie.Runtime != "N/A" && <p className="runtime">{movie.Runtime}</p>
+                                    movie.Runtime && movie.Runtime !== "N/A" && <p className="runtime">{movie.Runtime}</p>
                                 }
                                 {
-                                    movie.Director && movie.Director != "N/A" && <p className="director">Director: {movie.Director}</p>
+                                    movie.Director && movie.Director !== "N/A" && <p className="director">Director: {movie.Director}</p>
                                 }
-                                { movie.Plot && movie.Plot != "N/A" && <p className="plot">{movie.Plot}</p>}
+                                { movie.Plot && movie.Plot !== "N/A" && <p className="plot">{movie.Plot}</p>}
                             </div>
                         </div>
                     </div>
