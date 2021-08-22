@@ -63,11 +63,13 @@ span {
 .selectedMovie {
     position: fixed;
     top: 0;
+    bottom: 0;
+    right: 0;
     left: 0;
     background: #41414154;
-    width: 100%;
-    height: 100%;
+    padding: 5% 15%;
     display: flex;
+    align-items: center;
 }
 
 .pageBar {
@@ -102,12 +104,9 @@ span {
 
 .movieItem {
     position: relative;
-    width: 70%;
-    max-height: 80vh;
+    max-height: 100%;
     display: flex;
-    flex-direction: row;
-    margin: auto;
-    margin-top: 15vh;
+    flex-direction: column;
     border-radius: 10px;
     overflow: overlay;
     padding: 1rem;
@@ -116,21 +115,32 @@ span {
     color: black;
 }
 
+.closeMovie {
+    display: inherit;
+    justify-content: flex-end;
+}
+
 .close {
-    cursor: pointer;
     color: white;
-    position: fixed;
+    cursor: pointer;
+    margin: -0.3rem;
     background: #555ac2;
-    top: calc(12vh);
-    right: calc(15% - 30px);
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    text-align:center;
+    text-align: center;
+    z-index: 1;
 }
 
 .close:hover {
     box-shadow: rgb(161, 153, 231) 0 0 4px 4px;
+    transform: scale(1.2);
+}
+
+.moviePosterDetail {
+    display: inherit;
+    flex-direction: row;
+    margin-top: -0.9rem;
 }
 
 .movieDetail{
@@ -156,8 +166,9 @@ span {
     font-style: italic;
 }
 
-.runtime:hover, .released:hover {
+.runtime:hover, .released:hover, .director:hover, .genre:hover, .plot:hover {
     color: #ffedb4;
+    text-shadow: 0 0 2px 1px rgb(143, 140, 140);
 }
 
 img {

@@ -80,10 +80,12 @@ const MovieResults = (props) => {
                 }
             </div>
             {
-                showMovie
-                    ? <div className="selectedMovie">
-                        <div className="movieItem">
+                showMovie && <div className="selectedMovie">
+                    <div className="movieItem">
+                        <div className="closeMovie">
                             <span className="close" onClick={() => setShowMovie(false)}>x</span>
+                        </div>
+                        <div className="moviePosterDetail">
                             { // display movie poster if available (not null or N/A)
                                 movie.Poster && movie.Poster !== "N/A" && <img src={movie.Poster} alt={`Movie poster for ${movie.Title}`} />
                             }
@@ -105,7 +107,7 @@ const MovieResults = (props) => {
                             </div>
                         </div>
                     </div>
-                    : null
+                </div>
             }
         </div>
     )
