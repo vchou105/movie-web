@@ -8,9 +8,10 @@
     width: 100%;
 }
 
-/* .resultSection {
-    text-align: left;
-} */
+.resultSection {
+    font-family: Quicksand, IBM Plex Sans, 'Segoe UI';
+    width: 90%;
+}
 
 span {
     margin: 0.5rem 0;
@@ -66,6 +67,37 @@ span {
     background: #41414154;
     width: 100%;
     height: 100%;
+    display: flex;
+}
+
+.pageBar {
+    display: flex;
+    margin: 1rem auto;
+    flex-direction: row;
+    font-size: 0.8rem;
+    overflow: auto;
+    color: #669afc;
+    padding: 0.6rem;
+}
+
+.pageOption {
+    margin: 0 auto;
+    padding: 0.1rem 0.4rem;
+    border: transparent solid;
+    border-radius: 5px;
+}
+
+.pageOption.active {
+    background-color: #181818;
+    font-weight: bold;
+    border: #669afc solid 1.2px;
+}
+
+.pageOption:hover {
+    cursor: pointer;
+    border: rgb(56,54,54) solid 1px;
+    background-color: rgb(56 54 54);
+    text-decoration: underline #669afc;
 }
 
 .movieItem {
@@ -74,7 +106,8 @@ span {
     max-height: 80vh;
     display: flex;
     flex-direction: row;
-    margin: 10vh auto;
+    margin: auto;
+    margin-top: 15vh;
     border-radius: 10px;
     overflow: overlay;
     padding: 1rem;
@@ -87,10 +120,8 @@ span {
     cursor: pointer;
     color: white;
     position: fixed;
-    margin: 10vh auto;
     background: #555ac2;
-    content: 'x';
-    top: calc(-2vh);
+    top: calc(12vh);
     right: calc(15% - 30px);
     width: 25px;
     height: 25px;
@@ -107,6 +138,7 @@ span {
     flex-direction: column;
     margin: 0 1rem;
     font-size: 0.8rem;
+    text-align: left;
 }
 
 .title {
@@ -124,22 +156,41 @@ span {
     font-style: italic;
 }
 
+.runtime:hover, .released:hover {
+    color: #ffedb4;
+}
+
+img {
+    max-height: 60vmin;
+}
+
 p {
     margin: 0.1rem 0;
+    font-family: IBM Plex Sans, 'Segoe UI';
+    font-size: 0.85rem;
+    width: fit-content;
 }
  
 .genre{
-    color: #000000;
+    color: #cacaca;
     font-family: IBM Plex Sans, 'Segoe UI';
     font-style: italic;
+    background: #727272ea;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0.5rem 0;
 }
 
 .director {
-    margin: 0.6rem 0;
+    margin: 0.5rem 0;
 }
 
 .plot {
     margin: 1rem 0;
-    font-family: IBM Plex Sans, 'Segoe UI';
     font-size: 0.9rem;
 }
+
+.released, .runtime, .director {
+    text-indent: 3px;
+}
+
