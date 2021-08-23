@@ -45,9 +45,9 @@ function SearchMovies() {
         <div className="searchMovies">
             <span className="searchTitle">Search for your favorite movies!</span>
             <form onSubmit={handleSearch}>
-                <label htmlFor="movieInput" className="">🎬🔎: </label>
+                <label htmlFor="movieInput" className="searchLabel">🎬🔎: </label>
                 <input type="search" id="movieInput" value={query} className="searchInput" 
-                    placeholder="Search movie title...🔍" onChange={e => setQuery(e.target.value)} required/>
+                    placeholder="Search movie title... 🔍" onChange={e => setQuery(e.target.value)} required/>
             </form>
             { showMovies && <MovieResults data={movies} search={(p) => handlePageSelected(p)}/> } 
         </div>
