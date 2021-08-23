@@ -64,6 +64,7 @@ const MovieResults = (props) => {
                                 // uses regex to handle cases when year has non-numeric values, such as "2011-"
                                 let year = movie.Year.replace(/\D/g, '');
                                 return <div onClick={() => handleSearchTitle(movie.Title)} className="searchMovieItem">
+                                    {/* { movie.Poster && movie.Poster !== "N/A" && <span><img src={movie.Poster} alt={`Movie poster for ${movie.Title}`} /> </span>} */}
                                     <span className="searchMovieTitle">{movie.Title}</span>
                                     <span className="searchMovieYear">, {year}</span>
                                 </div>
@@ -80,7 +81,7 @@ const MovieResults = (props) => {
                 }
             </div>
             {
-                showMovie && <div className="selectedMovie">
+                showMovie && <div className="selectedMovie" onClick={(e) => e.target.className === "selectedMovie" && setShowMovie(false)}>
                     <div className="movieItem">
                         <div className="closeMovie">
                             <span className="close" onClick={() => setShowMovie(false)}>x</span>
