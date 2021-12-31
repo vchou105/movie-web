@@ -49,8 +49,9 @@ function SearchMovies() {
 
     useEffect(() => {
         // similar to componentDidMount or componentDidUpdate
-        if (searchParams.get('q') != "") {
+        if (!showMovies && searchParams && searchParams.get('q') && searchParams.get('q') !== "") {
             setQuery(searchParams.get('q'))
+            // console.log(searchParams.get('q'))
             handleSearch()
         }
     })
