@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SearchMovies.css';
 import MovieResults from './MovieResults';
+// import { useNavigate } from 'react-router-dom';
 
 function SearchMovies() {
     const [movies, setMovies] = useState([])
     const [query, setQuery] = useState("")
     const [showMovies, setShowMovies] = useState(false)
     const [page, setPage] = useState(1)
+    // const navigate = useNavigate()
 
     function handleSearch(e) {
         // cancel default submit action of form 
@@ -24,6 +26,7 @@ function SearchMovies() {
                 // store returned json body of movie search results
                 setMovies(data) 
                 setShowMovies(true)
+                // navigate(`search?q=${query}`)
                 // find number of pages
                 // handlePageOptions() 
                 return data
@@ -41,13 +44,23 @@ function SearchMovies() {
         handleSearch()
     }
 
+    useEffect(() => {
+        // similar to componentDidMount or componentDidUpdate
+        if (!showMovies) {
+            // navigate('/')
+        }
+    })
+
     return (
         <div className="searchMovies">
             <span className="searchTitle">Search for your favorite movies!</span>
             <form onSubmit={handleSearch}>
-                <label htmlFor="movieInput" className="searchLabel">🎬🔎: </label>
+                <div className="searchBar">
+                {/* <label htmlFor="movieInput" className="searchLabel">Search:</label> */}
                 <input type="search" id="movieInput" value={query} className="searchInput" 
-                    placeholder="Search movie title... 🔍" onChange={e => setQuery(e.target.value)} required/>
+                    placeholder="Enter movie title..." onChange={e => setQuery(e.target.value)} required/>
+                <span className="searchIcon">🎬🔎</span>
+                </div>
             </form>
             { showMovies && <MovieResults data={movies} search={(p) => handlePageSelected(p)}/> } 
         </div>
