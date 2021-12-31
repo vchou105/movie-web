@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './SearchMovies.css';
 import MovieResults from './MovieResults';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function SearchMovies() {
     const [movies, setMovies] = useState([])
     const [query, setQuery] = useState("")
     const [showMovies, setShowMovies] = useState(false)
     const [page, setPage] = useState(1)
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     function handleSearch(e) {
         // cancel default submit action of form 
@@ -26,7 +26,7 @@ function SearchMovies() {
                 // store returned json body of movie search results
                 setMovies(data) 
                 setShowMovies(true)
-                // navigate(`search?q=${query}`)
+                navigate(`search?q=${query}`)
                 // find number of pages
                 // handlePageOptions() 
                 return data

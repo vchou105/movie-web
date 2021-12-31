@@ -6,12 +6,14 @@ import { BrowserRouter, Switch, Router, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-      <div className="App">
+    <div className="App">
         {/* <header className="App-header">
             <span className="App-logo">🎞👓📽🎥</span>
         </header> */}
+      <BrowserRouter>
         <SearchMovie/>
-      </div>
+      </BrowserRouter>
+    </div>
   );
 }
 
