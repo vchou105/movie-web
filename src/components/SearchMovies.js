@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SearchMovies.css';
 import MovieResults from './MovieResults';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
 
 function SearchMovies() {
     const [movies, setMovies] = useState([])
@@ -9,6 +9,7 @@ function SearchMovies() {
     const [showMovies, setShowMovies] = useState(false)
     const [page, setPage] = useState(1)
     const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams();
 
     function handleSearch(e) {
         // cancel default submit action of form 
@@ -27,6 +28,8 @@ function SearchMovies() {
                 setMovies(data) 
                 setShowMovies(true)
                 navigate(`search?q=${query}`)
+                // setSearchParams(query)
+
                 // find number of pages
                 // handlePageOptions() 
                 return data
@@ -46,9 +49,12 @@ function SearchMovies() {
 
     useEffect(() => {
         // similar to componentDidMount or componentDidUpdate
-        if (!showMovies) {
+        // url query not cleared yet
+        if (!showMovies && searchParams.get('q') != "") {
             // navigate('/')
+            // setSearchParams('')
         }
+        console.log(searchParams.get('q'), query)
     })
 
     return (
@@ -59,7 +65,7 @@ function SearchMovies() {
                 {/* <label htmlFor="movieInput" className="searchLabel">Search:</label> */}
                 <input type="search" id="movieInput" value={query} className="searchInput" 
                     placeholder="Enter movie title..." onChange={e => setQuery(e.target.value)} required/>
-                <span className="searchIcon">🎬🔎</span>
+                <span className="searchIcon">🔎</span>
                 </div>
             </form>
             { showMovies && <MovieResults data={movies} search={(p) => handlePageSelected(p)}/> } 
