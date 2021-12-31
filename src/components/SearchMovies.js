@@ -51,7 +51,6 @@ function SearchMovies() {
         // similar to componentDidMount or componentDidUpdate
         if (searchParams.get('q') != "") {
             setQuery(searchParams.get('q'))
-            // fetchAPI()
             handleSearch()
         }
     })
