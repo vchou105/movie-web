@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SearchMovies.css';
 import MovieResults from './MovieResults';
-import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 function SearchMovies() {
     const [movies, setMovies] = useState([])
@@ -51,7 +51,7 @@ function SearchMovies() {
         // similar to componentDidMount or componentDidUpdate
         // url query not cleared yet
         if (!showMovies && searchParams.get('q') != "") {
-            // navigate('/')
+            // navigate('/search')
             // setSearchParams('')
         }
         console.log(searchParams.get('q'), query)
