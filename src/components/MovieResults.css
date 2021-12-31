@@ -93,7 +93,7 @@ span {
 .pageOption.active {
     background-color: #181818;
     font-weight: bold;
-    border: #669afc solid 1.2px;
+    /* border: #669afc solid 1.2px; */
 }
 
 .pageOption:hover {

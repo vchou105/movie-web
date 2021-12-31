@@ -10,7 +10,7 @@ function SearchMovies() {
     const [page, setPage] = useState(1)
     const navigate = useNavigate()
     const [searchParams, setSearchParams] = useSearchParams();
-
+ 
     function handleSearch(e) {
         // cancel default submit action of form 
         e && e.preventDefault()
@@ -38,7 +38,7 @@ function SearchMovies() {
                 console.error('Error: ', error) 
                 return Promise.reject(error)
             })
-        }        
+        }    
         fetchAPI()
     }
 
@@ -49,12 +49,11 @@ function SearchMovies() {
 
     useEffect(() => {
         // similar to componentDidMount or componentDidUpdate
-        // url query not cleared yet
-        if (!showMovies && searchParams.get('q') != "") {
-            // navigate('/search')
-            // setSearchParams('')
+        if (searchParams.get('q') != "") {
+            setQuery(searchParams.get('q'))
+            // fetchAPI()
+            handleSearch()
         }
-        console.log(searchParams.get('q'), query)
     })
 
     return (
