@@ -9,7 +9,7 @@ export default function Home() {
         <div>
             <a className="home" href="/">🎬</a>
             <SearchMovies /> 
-            <span className="featuredMovies">Recent movies coming soon...</span>
+            <span className="featuredMovies">Featured movies coming soon...</span>
         </div>
     )
 }
