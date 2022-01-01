@@ -9,3 +9,9 @@
 .home:hover {
     cursor: pointer;
 }
+
+.featuredMovies {
+    color: #699afc;
+    font-family: Quicksand, 'Segoe UI', sans-serif;
+    font-style: italic;
+}
