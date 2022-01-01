@@ -63,7 +63,7 @@ const MovieResults = (props) => {
                             {movies.Search.map(movie => {
                                 // uses regex to handle cases when year has non-numeric values, such as "2011-"
                                 let year = movie.Year.replace(/\D/g, '');
-                                return <div onClick={() => handleSearchTitle(movie.Title)} className="searchMovieItem">
+                                return <div onClick={() => handleSearchTitle(movie.Title)} className="searchMovieItem" key={`${movie.Title}${year}`}>
                                     {/* { movie.Poster && movie.Poster !== "N/A" && <span><img src={movie.Poster} alt={`Movie poster for ${movie.Title}`} /> </span>} */}
                                     <span className="searchMovieTitle">{movie.Title}</span>
                                     <span className="searchMovieYear">, {year}</span>
@@ -75,8 +75,7 @@ const MovieResults = (props) => {
             <div className="pageBar">
                 { 
                     setPages().map(page => {
-                        return <span className={page === currPage ? "active pageOption" : "pageOption"} onClick={() => loadPage(page)}>{page}</span>
-                        
+                        return <span key={`page${page}`} className={page === currPage ? "active pageOption" : "pageOption"} onClick={() => loadPage(page)}>{page}</span>                        
                     })
                 }
             </div>

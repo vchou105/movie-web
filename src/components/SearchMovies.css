@@ -11,14 +11,13 @@
 
 .searchTitle {
     color: #aec9ec;
-    margin: 1.5rem 1rem;
+    margin: 1rem;
     margin-bottom: 2.5rem;
-    font-family: IBM Plex Sans, Questrial, 'Segoe UI';
+    font-family: Quicksand, IBM Plex Sans, 'Segoe UI';
     font-size: 1.1rem;
 }
 
 .searchBar {
-    /* width: 60vw; */
     background-color: #1c1f2ac2;
     border-radius: 0.8rem;
 }

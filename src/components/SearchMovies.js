@@ -49,15 +49,21 @@ function SearchMovies() {
 
     useEffect(() => {
         // similar to componentDidMount or componentDidUpdate
-        if (!showMovies && searchParams && searchParams.get('q') && searchParams.get('q') !== "") {
+        if (searchParams && searchParams.get('q') && searchParams.get('q') !== "") {
             setQuery(searchParams.get('q'))
-            // console.log(searchParams.get('q'))
+            console.log(searchParams.get('q'), query)
             handleSearch()
         }
-    })
+        // clean up results and query when home icon clicked
+        /*if (query != "" && showMovies && !searchParams.get('q')) {
+            setQuery('')
+            console.log('refresh', searchParams.get('q'))
+            setShowMovies(false)
+        }*/
+    }, [query, searchParams, showMovies])
 
     return (
-        <div className="searchMovies">
+        <div className="searchMovies" key="searchMovies">
             <span className="searchTitle">Search for your favorite movies!</span>
             <form onSubmit={handleSearch}>
                 <div className="searchBar">
