@@ -4,13 +4,12 @@
     text-align: left;
     overflow: auto;
     font-family: Quicksand, IBM Plex Sans, sans-serif;
-    margin-top: 1.5rem;
     width: 100%;
 }
 
 .resultSection {
     font-family: Quicksand, IBM Plex Sans, 'Segoe UI';
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
     width: 90%;
 }
 
