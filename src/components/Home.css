@@ -2,6 +2,8 @@
     margin: 1.5rem 2rem;
     display: flex;
     font-size: xx-large;
+    text-decoration: none;
+    width: fit-content;
 }
 
 .home:hover {

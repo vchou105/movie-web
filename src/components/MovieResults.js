@@ -60,13 +60,13 @@ const MovieResults = (props) => {
                     : <div className="movieResults">
                         <span className="searchResultVal">Total results: {movies.totalResults}</span>
                         <div className="searchList">
-                            {movies.Search.map(movie => {
+                            {movies.Search.map((movie, index) => {
                                 // uses regex to handle cases when year has non-numeric values, such as "2011-"
                                 let year = movie.Year.replace(/\D/g, '');
-                                return <div onClick={() => handleSearchTitle(movie.Title)} className="searchMovieItem" key={`${movie.Title}${year}`}>
+                                return <div onClick={() => handleSearchTitle(movie.Title)} className="searchMovieItem" key={`${movie.Title} ${index}`}>
                                     {/* { movie.Poster && movie.Poster !== "N/A" && <span><img src={movie.Poster} alt={`Movie poster for ${movie.Title}`} /> </span>} */}
                                     <span className="searchMovieTitle">{movie.Title}</span>
-                                    <span className="searchMovieYear">, {year}</span>
+                                    <span className="searchMovieYear">, {movie.Year}</span>
                                 </div>
                             })}
                         </div>

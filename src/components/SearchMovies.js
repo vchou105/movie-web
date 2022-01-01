@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './SearchMovies.css';
 import MovieResults from './MovieResults';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -10,8 +10,8 @@ function SearchMovies() {
     const [page, setPage] = useState(1)
     const navigate = useNavigate()
     const [searchParams, setSearchParams] = useSearchParams();
- 
-    function handleSearch(e) {
+
+    const handleSearch = useCallback((e) => {
         // cancel default submit action of form 
         e && e.preventDefault()
         async function fetchAPI() {
@@ -29,7 +29,7 @@ function SearchMovies() {
                 setShowMovies(true)
                 navigate(`search?q=${query}`)
                 // setSearchParams(query)
-
+                console.log('handle search')
                 // find number of pages
                 // handlePageOptions() 
                 return data
@@ -40,27 +40,25 @@ function SearchMovies() {
             })
         }    
         fetchAPI()
-    }
+    }, [query, page])
+
 
     const handlePageSelected = (p) => {
-        setPage(p) 
-        handleSearch()
+        setPage(p)
     }
 
     useEffect(() => {
-        // similar to componentDidMount or componentDidUpdate
-        if (searchParams && searchParams.get('q') && searchParams.get('q') !== "") {
+        // set input query to url query
+        if (!showMovies && searchParams && searchParams.get('q') && searchParams.get('q') != "" && searchParams.get('q') !== query) {
             setQuery(searchParams.get('q'))
-            console.log(searchParams.get('q'), query)
+        }
+        console.log('query ', query, searchParams.get('q'))
+
+        // load result if search query exists
+        if (searchParams.get('q') || query) {
             handleSearch()
         }
-        // clean up results and query when home icon clicked
-        /*if (query != "" && showMovies && !searchParams.get('q')) {
-            setQuery('')
-            console.log('refresh', searchParams.get('q'))
-            setShowMovies(false)
-        }*/
-    }, [query, searchParams, showMovies])
+    }, [query, searchParams, showMovies, handleSearch])
 
     return (
         <div className="searchMovies" key="searchMovies">
@@ -68,9 +66,9 @@ function SearchMovies() {
             <form onSubmit={handleSearch}>
                 <div className="searchBar">
                 {/* <label htmlFor="movieInput" className="searchLabel">Search:</label> */}
-                <input type="search" id="movieInput" value={query} className="searchInput" 
-                    placeholder="Enter movie title..." onChange={e => setQuery(e.target.value)} required/>
-                <span className="searchIcon">🔎</span>
+                    <input type="search" id="movieInput" value={query} className="searchInput" 
+                        placeholder="Enter movie title..." onChange={e => setQuery(e.target.value)} required/>
+                    <span className="searchIcon" onClick={handleSearch}>🔍</span>
                 </div>
             </form>
             { showMovies && <MovieResults data={movies} search={(p) => handlePageSelected(p)}/> } 

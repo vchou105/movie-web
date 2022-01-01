@@ -27,6 +27,14 @@
     border: #555AC2 solid 1.5px;
 }
 
+.searchIcon {
+    opacity: 70%;
+}
+
+.searchIcon:hover {
+    opacity: 100%;
+}
+
 .searchInput {
     width: 65vw;
 }
@@ -42,12 +50,12 @@
     border-radius: inherit;
 }
 
-.searchIcon:hover {
-    cursor: pointer;
-}
-
 .searchInput:focus {
     outline: none;
+}
+
+.searchIcon:hover {
+    cursor: pointer;
 }
 
 
